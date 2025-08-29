@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Hub | Arif Developers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            overflow-x: hidden;
+        }
+        
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a2530 100%);
+            color: white;
+            padding: 0.8rem 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+            color: #4ecdc4;
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .logo-text span {
+            color: #4ecdc4;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            color: #f8f9fa;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .nav-link:hover {
+            color: #4ecdc4;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #4ecdc4;
+            transition: width 0.3s ease;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 50px;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .search-box:focus-within {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 0 2px rgba(78, 205, 196, 0.3);
+        }
+        
+        .search-input {
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 0.4rem 0.8rem;
+            width: 180px;
+            outline: none;
+            font-size: 1rem;
+        }
+        
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .search-btn {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+        
+        .search-btn:hover {
+            color: #4ecdc4;
+        }
+        
+        .btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-login {
+            background: transparent;
+            border: 2px solid #4ecdc4;
+            color: #4ecdc4;
+        }
+        
+        .btn-login:hover {
+            background: #4ecdc4;
+            color: #1a2530;
+        }
+        
+        .btn-signup {
+            background: #4ecdc4;
+            border: 2px solid #4ecdc4;
+            color: #1a2530;
+        }
+        
+        .btn-signup:hover {
+            background: transparent;
+            color: #4ecdc4;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Content Page Specific Styles */
+        .content-container {
+            padding: 30px 20px;
+            width: 100%;
+        }
+        
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2c3e50;
+            font-size: 2.5rem;
+            position: relative;
+            padding-bottom: 15px;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: slideDown 0.8s ease-out 0.3s forwards;
+        }
+        
+        .page-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #3498db;
+            border-radius: 2px;
+            animation: expandLine 1s ease-out 1s forwards;
+        }
+        
+        .content-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 0.5s;
+        }
+        
+        .content-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 10px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 0.7s;
+        }
+        
+        .content-tab {
+            padding: 12px 25px;
+            background: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .content-tab.active {
+            background: #3498db;
+            color: white;
+        }
+        
+        .content-tab:hover:not(.active) {
+            background: #f8f9fa;
+            transform: translateY(-3px);
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            width: 100%;
+        }
+        
+        .content-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: cardAppear 0.6s ease-out forwards;
+        }
+        
+        .content-card:nth-child(1) { animation-delay: 0.4s; }
+        .content-card:nth-child(2) { animation-delay: 0.5s; }
+        .content-card:nth-child(3) { animation-delay: 0.6s; }
+        .content-card:nth-child(4) { animation-delay: 0.7s; }
+        .content-card:nth-child(5) { animation-delay: 0.8s; }
+        .content-card:nth-child(6) { animation-delay: 0.9s; }
+        
+        .content-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .content-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .content-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .content-card:hover .content-image img {
+            transform: scale(1.1);
+        }
+        
+        .content-category {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #3498db;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .content-details {
+            padding: 25px;
+        }
+        
+        .content-title {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            transition: color 0.3s ease;
+        }
+        
+        .content-card:hover .content-title {
+            color: #3498db;
+        }
+        
+        .content-excerpt {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .content-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #95a5a6;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ecf0f1;
+            padding-bottom: 15px;
+        }
+        
+        .content-author {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .author-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .content-cta {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            font-size: 0.9rem;
+        }
+        
+        .content-cta:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: all 0.6s ease;
+        }
+        
+        .content-cta:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .content-cta:hover:before {
+            left: 100%;
+        }
+        
+        .newsletter-section {
+            background: #3498db;
+            padding: 60px 40px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 80px;
+            color: white;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 1s;
+        }
+        
+        .newsletter-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .newsletter-section p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.8;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            gap: 15px;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        .newsletter-button {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-button:hover {
+            background: #1a252f;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Footer Styles */
+        .footer {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 40px 0 10px;
+            margin-top: 60px;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 30px;
+            padding: 0 15px;
+        }
+        
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: #3498db;
+        }
+        
+        .footer-about p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #3498db;
+            padding-left: 5px;
+        }
+        
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            color: #3498db;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #34495e;
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-social a:hover {
+            background: #3498db;
+            transform: translateY(-3px);
+        }
+        
+        .footer-newsletter input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 4px;
+            background: #34495e;
+            color: white;
+        }
+        
+        .footer-newsletter button {
+            padding: 12px 20px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .footer-newsletter button:hover {
+            background: #2980b9;
+        }
+        
+        .footer-bottom {
+            background: #1a252f;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .footer-bottom p {
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideDown {
+            from { 
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes expandLine {
+            from { width: 0; }
+            to { width: 80px; }
+        }
+        
+        @keyframes cardAppear {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .header-container {
+                padding: 0 15px;
+            }
+            
+            .content-container {
+                padding: 20px 15px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .nav-menu {
+                gap: 1.2rem;
+            }
+            
+            .search-input {
+                width: 140px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 0.8rem 1rem;
+                border-radius: 6px;
+            }
+            
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                padding: 1.5rem 0;
+                gap: 1rem;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .header-actions {
+                display: none;
+                width: 100%;
+                justify-content: center;
+                padding: 1rem 0;
+                flex-wrap: wrap;
+            }
+            
+            .header-actions.active {
+                display: flex;
+            }
+            
+            .search-box {
+                width: 100%;
+                max-width: 300px;
+                margin-bottom: 10px;
+            }
+            
+            .search-input {
+                width: 100%;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+                margin-bottom: 30px;
+            }
+            
+            .content-card {
+                animation: cardAppearMobile 0.6s ease-out forwards;
+            }
+            
+            .newsletter-section {
+                padding: 40px 20px;
+            }
+            
+            .newsletter-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            @keyframes cardAppearMobile {
+                from { 
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to { 
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .content-image {
+                height: 180px;
+            }
+            
+            .content-details {
+                padding: 20px;
+            }
+            
+            .content-title {
+                font-size: 1.3rem;
+            }
+            
+            .content-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .content-tab {
+                width: 200px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .logo-text {
+                font-size: 1.3rem;
+            }
+            
+            .logo-icon {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-indicator">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    
+    <div class="main-container">
+        <header class="header">
+            <div class="header-container">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <div class="logo-text">Arif<span>Developers</span></div>
+                </div>
+                
+                <button class="mobile-toggle" id="mobileToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link"><i class="fas fa-compass"></i> Explore</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="Projects.html" class="nav-link"><i class="fas fa-folder"></i>Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="team.html" class="nav-link"><i class="fas fa-users"></i> Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link"><i class="fas fa-file-alt"></i> Content</a>
+                    </li>
+                </ul>
+                
+                <div class="header-actions" id="headerActions">
+                    <div class="search-box">
+                        <input type="text" class="search-input" placeholder="Search...">
+                        <button class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <button class="btn btn-login">Login</button>
+                    <button class="btn btn-signup">Sign Up</button>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Content Section -->
+        <section class="content-container">
+            <h1 class="page-title">Content Hub</h1>
+            
+            <p class="content-description">
+                Explore our latest insights, tutorials, and industry news. We share valuable knowledge to help you succeed in the digital world.
+            </p>
+            
+            <div class="content-tabs">
+                <button class="content-tab active">All Content</button>
+                <button class="content-tab">Web Development</button>
+                <button class="content-tab">UI/UX Design</button>
+                <button class="content-tab">SEO</button>
+                <button class="content-tab">Mobile Apps</button>
+                <button class="content-tab">Tutorials</button>
+            </div>
+            
+            <div class="content-grid">
+                <!-- Content 1 -->
+                <div class="content-card">
+                    <div class="content-image">
+                        <img src="https://images.unsplash.com/photo-1581276879432-15e50529f34b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Web Development">
+                        <div class="content-category">Web Development</div>
+                    </div>
+                    <div class="content-details">
+                        <h3 class="content-title">10 Best Practices for Modern Web Development</h3>
+                        <p class="content-excerpt">
+                            Learn the essential practices that every web developer should follow to create efficient, secure, and maintainable websites.
+                        </p>
+                        <div class="content-meta">
+                            <span><i class="far fa-clock"></i> 5 min read</span>
+                            <span><i class="far fa-calendar"></i> Oct 15, 2023</span>
+                        </div>
+                        <div class="content-meta">
+                            <div class="content-author">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Author" class="author-avatar">
+                                <span>Arif Goldar</span>
+                            </div>
+                            <span><i class="far fa-comment"></i> 24 comments</span>
+                        </div>
+                        <a href="#" class="content-cta">Read Article</a>
+                    </div>
+                </div>
+                
+                <!-- Content 2 -->
+                <div class="content-card">
+                    <div class="content-image">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="UI/UX Design">
+                        <div class="content-category">UI/UX Design</div>
+                    </div>
+                    <div class="content-details">
+                        <h3 class="content-title">The Psychology of Color in Web Design</h3>
+                        <p class="content-excerpt">
+                            Discover how color choices impact user behavior and emotions, and how to use color psychology to improve your designs.
+                        </p>
+                        <div class="content-meta">
+                            <span><i class="far fa-clock"></i> 7 min read</span>
+                            <span><i class="far fa-calendar"></i> Oct 10, 2023</span>
+                        </div>
+                        <div class="content-meta">
+                            <div class="content-author">
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Author" class="author-avatar">
+                                <span>Sarah Johnson</span>
+                            </div>
+                            <span><i class="far fa-comment"></i> 18 comments</span>
+                        </div>
+                        <a href="#" class="content-cta">Read Article</a>
+                    </div>
+                </div>
+                
+                <!-- Content 3 -->
+                <div class="content-card">
+                    <div class="content-image">
+                        <img src="https://images.unsplash.com/photo-1589652717521-10c0d092dea9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="SEO">
+                        <div class="content-category">SEO</div>
+                    </div>
+                    <div class="content-details">
+                        <h3 class="content-title">SEO Trends to Watch in 2023</h3>
+                        <p class="content-excerpt">
+                            Stay ahead of the curve with these emerging SEO trends that will shape digital marketing strategies in the coming year.
+                        </p>
+                        <div class="content-meta">
+                            <span><i class="far fa-clock"></i> 6 min read</span>
+                            <span><i class="far fa-calendar"></i> Oct 5, 2023</span>
+                        </div>
+                        <div class="content-meta">
+                            <div class="content-author">
+                                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Author" class="author-avatar">
+                                <span>Emily Rodriguez</span>
+                            </div>
+                            <span><i class="far fa-comment"></i> 32 comments</span>
+                        </div>
+                        <a href="#" class="content-cta">Read Article</a>
+                    </div>
+                </div>
+                
+                <!-- Content 4 -->
+                <div class="content-card">
+                    <div class="content-image">
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Mobile Apps">
+                        <div class="content-category">Mobile Apps</div>
+                    </div>
+                    <div class="content-details">
+                        <h3 class="content-title">Cross-Platform vs Native App Development</h3>
+                        <p class="content-excerpt">
+                            A comprehensive comparison of cross-platform and native app development approaches to help you choose the right solution.
+                        </p>
+                        <div class="content-meta">
+                            <span><i class="far fa-clock"></i> 8 min read</span>
+                            <span><i class="far fa-calendar"></i> Sep 28, 2023</span>
+                        </div>
+                        <div class="content-meta">
+                            <div class="content-author">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Author" class="author-avatar">
+                                <span>Michael Chen</span>
+                            </div>
+                            <span><i class="far fa-comment"></i> 27 comments</span>
+                        </div>
+                        <a href="#" class="content-cta">Read Article</a>
+                    </div>
+                </div>
+                
+                <!-- Content 5 -->
+                <div class="content-card">
+                    <div class="content-image">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Tutorial">
+                        <div class="content-category">Tutorial</div>
+                    </div>
+                    <div class="content-details">
+                        <h3 class="content-title">Building a Responsive Dashboard with React</h3>
+                        <p class="content-excerpt">
+                            Step-by-step tutorial on creating a modern, responsive admin dashboard using React and popular UI libraries.
+                        </p>
+                        <div class="content-meta">
+                            <span><i class="far fa-clock"></i> 12 min read</span>
+                            <span><i class="far fa-calendar"></i> Sep 22, 2023</span>
+                        </div>
+                        <div class="content-meta">
+                            <div class="content-author">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Author" class="author-avatar">
+                                <span>Arif Goldar</span>
+                            </div>
+                            <span><i class="far fa-comment"></i> 41 comments</span>
+                        </div>
+                        <a href="#" class="content-cta">Read Tutorial</a>
+                    </div>
+                </div>
+                
+                <!-- Content 6 -->
+                <div class="content-card">
+                    <div class="content-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Analytics">
+                        <div class="content-category">Analytics</div>
+                    </div>
+                    <div class="content-details">
+                        <h3 class="content-title">How to Measure and Improve Website Performance</h3>
+                        <p class="content-excerpt">
+                            Learn which metrics matter most for website performance and how to optimize your site for better user experience.
+                        </p>
+                        <div class="content-meta">
+                            <span><i class="far fa-clock"></i> 9 min read</span>
+                            <span><i class="far fa-calendar"></i> Sep 15, 2023</span>
+                        </div>
+                        <div class="content-meta">
+                            <div class="content-author">
+                                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Author" class="author-avatar">
+                                <span>David Kim</span>
+                            </div>
+                            <span><i class="far fa-comment"></i> 29 comments</span>
+                        </div>
+                        <a href="#" class="content-cta">Read Article</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="newsletter-section">
+                <h2>Stay Updated with Our Latest Content</h2>
+                <p>Subscribe to our newsletter and never miss our latest articles, tutorials, and industry insights.</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Your email address">
+                    <button type="submit" class="newsletter-button">Subscribe</button>
+                </form>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section footer-about">
+                <h3>About Arif Developers</h3>
+                <p>We are a digital agency focused on delivering innovative web solutions that help businesses grow and succeed in the digital world.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="Projects.html">Projects</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="content.html">Content</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Chandpur, Panapukur, Kolkata, Pin - 700135</p>
+                <p><i class="fas fa-phone"></i> +91 97484 37602</p>
+                <p><i class="fas fa-envelope"></i> arifgoldar602@gmail.com</p>
+            </div>
+            
+            <div class="footer-section footer-newsletter">
+                <h3>Newsletter</h3>
+                <p>Subscribe to our newsletter for updates</p>
+                <input type="email" placeholder="Your Email">
+                <button>Subscribe</button>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+              © 2023 Arif Developers</i> All rights reserved. <i class="fas fa-heart updown-heart"></i>
+  <a href="https://arif-developers.netlify.app/" target="_blank" style="color: #00ffff; text-decoration: none;">Arif Goldar</a>
+        </div>
+    </footer>
+    <!-- Up-Down Heart Animation CSS -->
+<style>
+  .updown-heart {
+    color: deeppink;
+    animation: upDown 1s infinite ease-in-out;
+  }
+
+  @keyframes upDown {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+</style>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        const headerActions = document.getElementById('headerActions');
+        
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            headerActions.classList.toggle('active');
+        });
+        
+        // Content tabs functionality
+        const contentTabs = document.querySelectorAll('.content-tab');
+        
+        contentTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                contentTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // Here you would typically filter content based on the selected tab
+                // This is just a placeholder for the functionality
+                console.log(`Showing content for: ${tab.textContent}`);
+            });
+        });
+        
+        // Scroll progress indicator
+        window.onscroll = function() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("progressBar").style.width = scrolled + "%";
+        };
+    </script>
+</body>
+</html>

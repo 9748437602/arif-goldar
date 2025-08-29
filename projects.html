@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arif Goldar | Financial Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Previous CSS styles remain unchanged */
+        
+        /* New Financial Products Section Styles */
+        .financial-products-section {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e6f0ff 100%);
+            border-radius: 20px;
+            margin: 40px auto;
+            max-width: 1400px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2c3e50;
+            font-size: 2.5rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #3498db;
+            border-radius: 2px;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-header {
+            padding: 20px;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .product-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-logo img {
+            max-width: 80%;
+            max-height: 80%;
+        }
+        
+        .product-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .product-content {
+            padding: 25px;
+        }
+        
+        .product-description {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+        
+        .product-features {
+            list-style-type: none;
+            margin-bottom: 25px;
+        }
+        
+        .product-features li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #ecf0f1;
+            color: #34495e;
+            display: flex;
+            align-items: center;
+        }
+        
+        .product-features li i {
+            color: #3498db;
+            margin-right: 10px;
+        }
+        
+        .product-earning {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .earning-label {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 5px;
+        }
+        
+        .earning-amount {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #16a34a;
+        }
+        
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        
+        .product-btn {
+            flex: 1;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: #3498db;
+            color: white;
+            border: 2px solid #3498db;
+        }
+        
+        .btn-primary:hover {
+            background: #2980b9;
+            border-color: #2980b9;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #3498db;
+            border: 2px solid #3498db;
+        }
+        
+        .btn-secondary:hover {
+            background: #3498db;
+            color: white;
+        }
+        
+        .share-options {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            opacity: 0;
+            transform: translateX(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover .share-options {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .share-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            color: #3498db;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .share-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .share-btn.whatsapp:hover {
+            background: #25D366;
+            color: white;
+        }
+        
+        .share-btn.facebook:hover {
+            background: #3b5998;
+            color: white;
+        }
+        
+        .share-btn.twitter:hover {
+            background: #1DA1F2;
+            color: white;
+        }
+        
+        .share-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .share-modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+        }
+        
+        .share-modal h3 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        
+        .share-url {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .share-url input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+        }
+        
+        .copy-btn {
+            padding: 12px 20px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        
+        .social-share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .social-share {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-share:hover {
+            transform: scale(1.1);
+        }
+        
+        .whatsapp-share {
+            background: #25D366;
+        }
+        
+        .facebook-share {
+            background: #3b5998;
+        }
+        
+        .twitter-share {
+            background: #1DA1F2;
+        }
+        
+        .linkedin-share {
+            background: #0077B5;
+        }
+        
+        .close-modal {
+            padding: 10px 20px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header and other sections remain unchanged -->
+    
+    <!-- Financial Products Section -->
+    <section class="financial-products-section">
+        <h2 class="section-title">Financial Products</h2>
+        
+        <div class="products-grid">
+            <!-- Product 1: Demat Account -->
+            <div class="product-card">
+                <div class="share-options">
+                    <div class="share-btn whatsapp" data-product="Demat Account">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div class="share-btn facebook" data-product="Demat Account">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <div class="share-btn twitter" data-product="Demat Account">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                </div>
+                
+                <div class="product-header">
+                    <div class="product-logo">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968282.png" alt="Demat Account Logo">
+                    </div>
+                    <h3 class="product-title">Demat Account</h3>
+                </div>
+                
+                <div class="product-content">
+                    <p class="product-description">Open a Demat account to securely hold your securities in electronic form and trade in stocks.</p>
+                    
+                    <ul class="product-features">
+                        <li><i class="fas fa-check-circle"></i> Zero account maintenance fees</li>
+                        <li><i class="fas fa-check-circle"></i> Free equity delivery trades</li>
+                        <li><i class="fas fa-check-circle"></i> Advanced trading platforms</li>
+                        <li><i class="fas fa-check-circle"></i> Instant fund transfers</li>
+                    </ul>
+                    
+                    <div class="product-earning">
+                        <div class="earning-label">Earn up to</div>
+                        <div class="earning-amount">₹1700</div>
+                    </div>
+                    
+                    <div class="product-actions">
+                        <a href="#" class="product-btn btn-primary">Apply Now</a>
+                        <a href="#" class="product-btn btn-secondary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 2: Credit Cards -->
+            <div class="product-card">
+                <div class="share-options">
+                    <div class="share-btn whatsapp" data-product="Credit Cards">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div class="share-btn facebook" data-product="Credit Cards">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <div class="share-btn twitter" data-product="Credit Cards">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                </div>
+                
+                <div class="product-header">
+                    <div class="product-logo">
+                        <img src="https://cdn-icons-png.flaticon.com/512/179/179431.png" alt="Credit Card Logo">
+                    </div>
+                    <h3 class="product-title">Credit Cards</h3>
+                </div>
+                
+                <div class="product-content">
+                    <p class="product-description">Choose from a wide range of credit cards with exclusive benefits and rewards.</p>
+                    
+                    <ul class="product-features">
+                        <li><i class="fas fa-check-circle"></i> Low interest rates</li>
+                        <li><i class="fas fa-check-circle"></i> Reward points on spending</li>
+                        <li><i class="fas fa-check-circle"></i> Complimentary airport lounge access</li>
+                        <li><i class="fas fa-check-circle"></i> Fuel surcharge waiver</li>
+                    </ul>
+                    
+                    <div class="product-earning">
+                        <div class="earning-label">Earn up to</div>
+                        <div class="earning-amount">₹4500</div>
+                    </div>
+                    
+                    <div class="product-actions">
+                        <a href="#" class="product-btn btn-primary">Apply Now</a>
+                        <a href="#" class="product-btn btn-secondary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 3: Savings Account -->
+            <div class="product-card">
+                <div class="share-options">
+                    <div class="share-btn whatsapp" data-product="Savings Account">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div class="share-btn facebook" data-product="Savings Account">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <div class="share-btn twitter" data-product="Savings Account">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                </div>
+                
+                <div class="product-header">
+                    <div class="product-logo">
+                        <img src="https://cdn-icons-png.flaticon.com/512/929/929452.png" alt="Savings Account Logo">
+                    </div>
+                    <h3 class="product-title">Savings Account</h3>
+                </div>
+                
+                <div class="product-content">
+                    <p class="product-description">Open a savings account with high interest rates and zero balance requirements.</p>
+                    
+                    <ul class="product-features">
+                        <li><i class="fas fa-check-circle"></i> High interest rates</li>
+                        <li><i class="fas fa-check-circle"></i> Zero balance account</li>
+                        <li><i class="fas fa-check-circle"></i> Free debit card</li>
+                        <li><i class="fas fa-check-circle"></i> Net banking & mobile banking</li>
+                    </ul>
+                    
+                    <div class="product-earning">
+                        <div class="earning-label">Earn up to</div>
+                        <div class="earning-amount">₹1050</div>
+                    </div>
+                    
+                    <div class="product-actions">
+                        <a href="#" class="product-btn btn-primary">Apply Now</a>
+                        <a href="#" class="product-btn btn-secondary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 4: Personal Loan -->
+            <div class="product-card">
+                <div class="share-options">
+                    <div class="share-btn whatsapp" data-product="Personal Loan">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div class="share-btn facebook" data-product="Personal Loan">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <div class="share-btn twitter" data-product="Personal Loan">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                </div>
+                
+                <div class="product-header">
+                    <div class="product-logo">
+                        <img src="https://cdn-icons-png.flaticon.com/512/993/993738.png" alt="Personal Loan Logo">
+                    </div>
+                    <h3 class="product-title">Personal Loan</h3>
+                </div>
+                
+                <div class="product-content">
+                    <p class="product-description">Get instant personal loans with minimal documentation and quick disbursal.</p>
+                    
+                    <ul class="product-features">
+                        <li><i class="fas fa-check-circle"></i> Low interest rates</li>
+                        <li><i class="fas fa-check-circle"></i> Quick approval</li>
+                        <li><i class="fas fa-check-circle"></i> Flexible tenure</li>
+                        <li><i class="fas fa-check-circle"></i> No collateral required</li>
+                    </ul>
+                    
+                    <div class="product-earning">
+                        <div class="earning-label">Earn up to</div>
+                        <div class="earning-amount">4%</div>
+                    </div>
+                    
+                    <div class="product-actions">
+                        <a href="#" class="product-btn btn-primary">Apply Now</a>
+                        <a href="#" class="product-btn btn-secondary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 5: UPI App -->
+            <div class="product-card">
+                <div class="share-options">
+                    <div class="share-btn whatsapp" data-product="UPI App">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div class="share-btn facebook" data-product="UPI App">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <div class="share-btn twitter" data-product="UPI App">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                </div>
+                
+                <div class="product-header">
+                    <div class="product-logo">
+                        <img src="https://cdn-icons-png.flaticon.com/512/355/355974.png" alt="UPI App Logo">
+                    </div>
+                    <h3 class="product-title">UPI App</h3>
+                </div>
+                
+                <div class="product-content">
+                    <p class="product-description">Download UPI apps for seamless digital payments and cashback rewards.</p>
+                    
+                    <ul class="product-features">
+                        <li><i class="fas fa-check-circle"></i> Instant money transfer</li>
+                        <li><i class="fas fa-check-circle"></i> Bill payments</li>
+                        <li><i class="fas fa-check-circle"></i> Cashback offers</li>
+                        <li><i class="fas fa-check-circle"></i> Secure transactions</li>
+                    </ul>
+                    
+                    <div class="product-earning">
+                        <div class="earning-label">Earn up to</div>
+                        <div class="earning-amount">₹25</div>
+                    </div>
+                    
+                    <div class="product-actions">
+                        <a href="#" class="product-btn btn-primary">Download Now</a>
+                        <a href="#" class="product-btn btn-secondary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 6: Insurance -->
+            <div class="product-card">
+                <div class="share-options">
+                    <div class="share-btn whatsapp" data-product="Insurance">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div class="share-btn facebook" data-product="Insurance">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <div class="share-btn twitter" data-product="Insurance">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                </div>
+                
+                <div class="product-header">
+                    <div class="product-logo">
+                        <img src="https://cdn-icons-png.flaticon.com/512/992/992725.png" alt="Insurance Logo">
+                    </div>
+                    <h3 class="product-title">Insurance</h3>
+                </div>
+                
+                <div class="product-content">
+                    <p class="product-description">Protect your future with life, health, and vehicle insurance plans.</p>
+                    
+                    <ul class="product-features">
+                        <li><i class="fas fa-check-circle"></i> Comprehensive coverage</li>
+                        <li><i class="fas fa-check-circle"></i> Affordable premiums</li>
+                        <li><i class="fas fa-check-circle"></i> Quick claim settlement</li>
+                        <li><i class="fas fa-check-circle"></i> Tax benefits</li>
+                    </ul>
+                    
+                    <div class="product-earning">
+                        <div class="earning-label">Earn up to</div>
+                        <div class="earning-amount">₹00,00</div>
+                    </div>
+                    
+                    <div class="product-actions">
+                        <a href="#" class="product-btn btn-primary">Buy Now</a>
+                        <a href="#" class="product-btn btn-secondary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Share Modal -->
+    <div class="share-modal" id="share-modal">
+        <div class="share-modal-content">
+            <h3>Share <span id="share-product-name"></span></h3>
+            
+            <div class="share-url">
+                <input type="text" id="share-url-input" readonly>
+                <button class="copy-btn" id="copy-url-btn">Copy</button>
+            </div>
+            
+            <div class="social-share-buttons">
+                <a href="#" class="social-share whatsapp-share" id="whatsapp-share">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="#" class="social-share facebook-share" id="facebook-share">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-share twitter-share" id="twitter-share">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-share linkedin-share" id="linkedin-share">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+            
+            <button class="close-modal" id="close-modal">Close</button>
+        </div>
+    </div>
+
+    <!-- Footer remains unchanged -->
+
+    <script>
+        // Previous JavaScript remains unchanged
+        
+        // Share functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const shareButtons = document.querySelectorAll('.share-btn');
+            const shareModal = document.getElementById('share-modal');
+            const shareProductName = document.getElementById('share-product-name');
+            const shareUrlInput = document.getElementById('share-url-input');
+            const copyUrlBtn = document.getElementById('copy-url-btn');
+            const closeModal = document.getElementById('close-modal');
+            const whatsappShare = document.getElementById('whatsapp-share');
+            const facebookShare = document.getElementById('facebook-share');
+            const twitterShare = document.getElementById('twitter-share');
+            const linkedinShare = document.getElementById('linkedin-share');
+            
+            let currentProduct = '';
+            
+            // Open share modal
+            shareButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    currentProduct = this.getAttribute('data-product');
+                    const productUrl = `${window.location.origin}${window.location.pathname}?product=${encodeURIComponent(currentProduct)}`;
+                    
+                    shareProductName.textContent = currentProduct;
+                    shareUrlInput.value = productUrl;
+                    
+                    // Set social share links
+                    const shareText = `Check out this ${currentProduct} from Arif Goldar!`;
+                    whatsappShare.href = `https://wa.me/?text=${encodeURIComponent(shareText + ' ' + productUrl)}`;
+                    facebookShare.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(productUrl)}`;
+                    twitterShare.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(productUrl)}`;
+                    linkedinShare.href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(productUrl)}`;
+                    
+                    shareModal.style.display = 'flex';
+                });
+            });
+            
+            // Copy URL to clipboard
+            copyUrlBtn.addEventListener('click', function() {
+                shareUrlInput.select();
+                document.execCommand('copy');
+                
+                // Change button text temporarily
+                const originalText = this.textContent;
+                this.textContent = 'Copied!';
+                
+                setTimeout(() => {
+                    this.textContent = originalText;
+                }, 2000);
+            });
+            
+            // Close modal
+            closeModal.addEventListener('click', function() {
+                shareModal.style.display = 'none';
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(event) {
+                if (event.target === shareModal) {
+                    shareModal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
