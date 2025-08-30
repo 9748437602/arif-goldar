@@ -218,7 +218,8 @@
         
         /* Team Section Styles */
         .team-container {
-            padding: 60px 20px;
+            padding: 30px 20px;
+            width: 100%;
         }
         
         .page-title {
@@ -246,26 +247,14 @@
             animation: expandLine 1s ease-out 1s forwards;
         }
         
-        .team-description {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 50px;
-            color: #7f8c8d;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            opacity: 0;
-            animation: fadeIn 1s ease-out forwards;
-            animation-delay: 0.5s;
-        }
-        
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-bottom: 60px;
+            width: 100%;
         }
         
-        .team-member-card {
+        .team-member {
             background: white;
             border-radius: 12px;
             overflow: hidden;
@@ -276,21 +265,21 @@
             animation: cardAppear 0.6s ease-out forwards;
         }
         
-        .team-member-card:nth-child(1) { animation-delay: 0.6s; }
-        .team-member-card:nth-child(2) { animation-delay: 0.7s; }
-        .team-member-card:nth-child(3) { animation-delay: 0.8s; }
-        .team-member-card:nth-child(4) { animation-delay: 0.9s; }
-        .team-member-card:nth-child(5) { animation-delay: 1.0s; }
-        .team-member-card:nth-child(6) { animation-delay: 1.1s; }
+        .team-member:nth-child(1) { animation-delay: 0.4s; }
+        .team-member:nth-child(2) { animation-delay: 0.5s; }
+        .team-member:nth-child(3) { animation-delay: 0.6s; }
+        .team-member:nth-child(4) { animation-delay: 0.7s; }
+        .team-member:nth-child(5) { animation-delay: 0.8s; }
+        .team-member:nth-child(6) { animation-delay: 0.9s; }
         
-        .team-member-card:hover {
+        .team-member:hover {
             transform: translateY(-10px) scale(1.02);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
         
         .member-image {
             position: relative;
-            height: 280px;
+            height: 250px;
             overflow: hidden;
         }
         
@@ -301,7 +290,7 @@
             transition: transform 0.5s ease;
         }
         
-        .team-member-card:hover .member-image img {
+        .team-member:hover .member-image img {
             transform: scale(1.1);
         }
         
@@ -310,251 +299,73 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
             padding: 20px;
             color: white;
             transform: translateY(100%);
             transition: transform 0.3s ease;
         }
         
-        .team-member-card:hover .member-overlay {
+        .team-member:hover .member-overlay {
             transform: translateY(0);
         }
         
         .member-social {
             display: flex;
             gap: 15px;
-            margin-top: 15px;
+            margin-top: 10px;
         }
         
         .member-social a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.2);
             color: white;
-            border-radius: 50%;
-            text-decoration: none;
-            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
         }
         
         .member-social a:hover {
-            background: #3498db;
-            transform: translateY(-3px);
+            transform: scale(1.3);
+            color: #4ecdc4;
         }
         
-        .member-content {
+        .member-info {
             padding: 25px;
         }
         
         .member-name {
             color: #2c3e50;
             font-size: 1.5rem;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             transition: color 0.3s ease;
         }
         
-        .team-member-card:hover .member-name {
+        .team-member:hover .member-name {
             color: #3498db;
         }
         
         .member-position {
             color: #7f8c8d;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .member-desc {
+            color: #555;
+            margin-bottom: 20px;
             font-size: 1rem;
-            margin-bottom: 15px;
-            font-weight: 500;
         }
         
-        .member-bio {
-            color: #7f8c8d;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        
-        .member-skills {
+        .member-contact {
             display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-        
-        .skill-tag {
-            background: #f1f8ff;
-            color: #3498db;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-        
-        .member-cta {
-            display: inline-flex;
             align-items: center;
-            gap: 8px;
             color: #3498db;
+            font-weight: 500;
             text-decoration: none;
-            font-weight: 600;
             transition: all 0.3s ease;
         }
         
-        .member-cta:hover {
-            gap: 12px;
-            color: #2980b9;
-        }
-        
-        /* Departments Section */
-        .departments-container {
-            background: #f8f9fa;
-            padding: 60px 20px;
-            border-radius: 12px;
-            margin-bottom: 60px;
-        }
-        
-        .departments-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .department-card {
-            background: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: cardAppear 0.6s ease-out forwards;
-        }
-        
-        .department-card:nth-child(1) { animation-delay: 0.7s; }
-        .department-card:nth-child(2) { animation-delay: 0.8s; }
-        .department-card:nth-child(3) { animation-delay: 0.9s; }
-        
-        .department-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .department-icon {
-            width: 70px;
-            height: 70px;
-            background: #3498db;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-            color: white;
-            transition: all 0.3s ease;
-        }
-        
-        .department-card:hover .department-icon {
-            transform: scale(1.1) rotate(5deg);
-            background: #2980b9;
-        }
-        
-        .department-title {
+        .member-contact:hover {
             color: #2c3e50;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-        
-        .department-description {
-            color: #7f8c8d;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-        
-        .department-stats {
-            display: flex;
-            gap: 20px;
-            border-top: 1px solid #f1f5f9;
-            padding-top: 20px;
-        }
-        
-        .stat-item {
-            text-align: center;
-        }
-        
-        .stat-number {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #3498db;
-            line-height: 1;
-            margin-bottom: 5px;
-        }
-        
-        .stat-label {
-            font-size: 0.85rem;
-            color: #7f8c8d;
-        }
-        
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
-            padding: 80px 20px;
-            border-radius: 12px;
-            text-align: center;
-            color: white;
-            margin-bottom: 60px;
-        }
-        
-        .cta-title {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-        
-        .cta-description {
-            max-width: 700px;
-            margin: 0 auto 30px;
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .btn-primary {
-            background: white;
-            color: #3498db;
-            padding: 15px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            background: #f8f9fa;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-            padding: 15px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-secondary:hover {
-            background: white;
-            color: #3498db;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transform: translateX(5px);
         }
         
         /* Footer Styles */
@@ -693,7 +504,6 @@
             font-size: 14px;
         }
         
-        /* Scroll Indicator */
         .scroll-indicator {
             position: fixed;
             top: 0;
@@ -744,6 +554,131 @@
             to { 
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+        
+        /* মিউজিক প্লেয়ার স্টাইল */
+        #music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        #music-info {
+            position: absolute;
+            bottom: 60px;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 14px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        #music-info.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        #music-toggle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #music-toggle:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        #music-toggle:active {
+            transform: scale(0.95);
+        }
+        
+        #music-toggle.playing {
+            background: linear-gradient(135deg, #ff5e7d, #ff9500);
+            animation: pulse 1.5s infinite;
+        }
+        
+        #music-toggle .icon-play, 
+        #music-toggle .icon-pause {
+            transition: all 0.3s ease;
+            position: absolute;
+        }
+        
+        #music-toggle .icon-pause {
+            opacity: 0;
+            transform: scale(0.5) rotate(90deg);
+        }
+        
+        #music-toggle.playing .icon-play {
+            opacity: 0;
+            transform: scale(0.5) rotate(-90deg);
+        }
+        
+        #music-toggle.playing .icon-pause {
+            opacity: 1;
+            transform: scale(1) rotate(0);
+        }
+        
+        .wave-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            opacity: 0;
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(0);
+            pointer-events: none;
+        }
+        
+        .wave-animation.animate {
+            animation: wave 0.5s ease-out;
+        }
+        
+        @keyframes wave {
+            0% {
+                transform: scale(0);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(52, 152, 219, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(52, 152, 219, 0);
             }
         }
         
@@ -817,11 +752,6 @@
                 width: 100%;
             }
             
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
             .footer-container {
                 flex-direction: column;
             }
@@ -840,16 +770,19 @@
                 font-size: 1.8rem;
             }
             
-            .team-grid {
-                grid-template-columns: 1fr;
+            .team-member {
+                margin-bottom: 20px;
             }
             
-            .departments-grid {
-                grid-template-columns: 1fr;
+            #music-player {
+                bottom: 15px;
+                right: 15px;
             }
             
-            .cta-title {
-                font-size: 2rem;
+            #music-toggle {
+                width: 55px;
+                height: 55px;
+                font-size: 22px;
             }
         }
     </style>
@@ -903,259 +836,154 @@
         <!-- Team Section -->
         <div class="team-container">
             <h1 class="page-title">Our Expert Team</h1>
-            <p class="team-description">
-                Meet the talented professionals who make Arif Goldar a leader in real estate and financial services. 
-                Our team brings together diverse expertise to deliver exceptional results for our clients.
-            </p>
-            
             <div class="team-grid">
                 <!-- Team Member 1 -->
-                <div class="team-member-card">
+                <div class="team-member">
                     <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="Team Member">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80" alt="Team Member">
                         <div class="member-overlay">
                             <div class="member-social">
                                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                                 <a href="#"><i class="fab fa-twitter"></i></a>
                                 <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#"><i class="fas fa-envelope"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="member-content">
-                        <h3 class="member-name">Rahul Sharma</h3>
+                    <div class="member-info">
+                        <h3 class="member-name">Rajesh Sharma</h3>
                         <p class="member-position">Senior Real Estate Consultant</p>
-                        <p class="member-bio">With over 10 years of experience, Rahul specializes in residential properties and has helped hundreds of families find their dream homes.</p>
-                        <div class="member-skills">
-                            <span class="skill-tag">Residential</span>
-                            <span class="skill-tag">Investment</span>
-                            <span class="skill-tag">Vastu</span>
-                        </div>
-                        <a href="#" class="member-cta">View Profile <i class="fas fa-arrow-right"></i></a>
+                        <p class="member-desc">With over 12 years of experience in real estate, Rajesh specializes in residential properties and has helped hundreds of clients find their dream homes.</p>
+                        <a href="#" class="member-contact">
+                            <i class="fas fa-envelope"></i> Contact Rajesh
+                        </a>
                     </div>
                 </div>
                 
                 <!-- Team Member 2 -->
-                <div class="team-member-card">
+                <div class="team-member">
                     <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="Team Member">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80" alt="Team Member">
                         <div class="member-overlay">
                             <div class="member-social">
                                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                                 <a href="#"><i class="fab fa-twitter"></i></a>
                                 <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#"><i class="fas fa-envelope"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="member-content">
+                    <div class="member-info">
                         <h3 class="member-name">Priya Singh</h3>
                         <p class="member-position">Financial Advisor</p>
-                        <p class="member-bio">Priya is an expert in financial planning and investment strategies, helping clients make informed decisions about their financial future.</p>
-                        <div class="member-skills">
-                            <span class="skill-tag">Investment</span>
-                            <span class="skill-tag">Loans</span>
-                            <span class="skill-tag">Planning</span>
-                        </div>
-                        <a href="#" class="member-cta">View Profile <i class="fas fa-arrow-right"></i></a>
+                        <p class="member-desc">Priya is an expert in home loans and financial planning. She has helped numerous clients secure the best financing options for their properties.</p>
+                        <a href="#" class="member-contact">
+                            <i class="fas fa-envelope"></i> Contact Priya
+                        </a>
                     </div>
                 </div>
                 
                 <!-- Team Member 3 -->
-                <div class="team-member-card">
+                <div class="team-member">
                     <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="Team Member">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80" alt="Team Member">
                         <div class="member-overlay">
                             <div class="member-social">
                                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                                 <a href="#"><i class="fab fa-twitter"></i></a>
                                 <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#"><i class="fas fa-envelope"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="member-content">
+                    <div class="member-info">
                         <h3 class="member-name">Amit Kumar</h3>
                         <p class="member-position">Legal Advisor</p>
-                        <p class="member-bio">Amit specializes in real estate law and ensures all transactions are legally sound and in the best interest of our clients.</p>
-                        <div class="member-skills">
-                            <span class="skill-tag">Legal</span>
-                            <span class="skill-tag">Documentation</span>
-                            <span class="skill-tag">Compliance</span>
-                        </div>
-                        <a href="#" class="member-cta">View Profile <i class="fas fa-arrow-right"></i></a>
+                        <p class="member-desc">Amit specializes in property law and documentation. His expertise ensures all transactions are legally sound and hassle-free for our clients.</p>
+                        <a href="#" class="member-contact">
+                            <i class="fas fa-envelope"></i> Contact Amit
+                        </a>
                     </div>
                 </div>
                 
                 <!-- Team Member 4 -->
-                <div class="team-member-card">
+                <div class="team-member">
                     <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db1604?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="Team Member">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80" alt="Team Member">
                         <div class="member-overlay">
                             <div class="member-social">
                                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                                 <a href="#"><i class="fab fa-twitter"></i></a>
                                 <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#"><i class="fas fa-envelope"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="member-content">
+                    <div class="member-info">
                         <h3 class="member-name">Sneha Patel</h3>
-                        <p class="member-position">Marketing Head</p>
-                        <p class="member-bio">Sneha leads our marketing efforts, creating innovative campaigns that connect with our audience and showcase our properties.</p>
-                        <div class="member-skills">
-                            <span class="skill-tag">Digital Marketing</span>
-                            <span class="skill-tag">Branding</span>
-                            <span class="skill-tag">Strategy</span>
-                        </div>
-                        <a href="#" class="member-cta">View Profile <i class="fas fa-arrow-right"></i></a>
+                        <p class="member-position">Interior Designer</p>
+                        <p class="member-desc">Sneha transforms properties into dream spaces with her innovative interior design solutions that maximize both aesthetics and functionality.</p>
+                        <a href="#" class="member-contact">
+                            <i class="fas fa-envelope"></i> Contact Sneha
+                        </a>
                     </div>
                 </div>
                 
                 <!-- Team Member 5 -->
-                <div class="team-member-card">
+                <div class="team-member">
                     <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="Team Member">
+                        <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80" alt="Team Member">
                         <div class="member-overlay">
                             <div class="member-social">
                                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                                 <a href="#"><i class="fab fa-twitter"></i></a>
                                 <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#"><i class="fas fa-envelope"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="member-content">
+                    <div class="member-info">
                         <h3 class="member-name">Vikram Malhotra</h3>
-                        <p class="member-position">Property Manager</p>
-                        <p class="member-bio">Vikram oversees property management, ensuring our clients' investments are well-maintained and profitable.</p>
-                        <div class="member-skills">
-                            <span class="skill-tag">Management</span>
-                            <span class="skill-tag">Maintenance</span>
-                            <span class="skill-tag">Tenant Relations</span>
-                        </div>
-                        <a href="#" class="member-cta">View Profile <i class="fas fa-arrow-right"></i></a>
+                        <p class="member-position">Property Valuer</p>
+                        <p class="member-desc">With his extensive knowledge of market trends, Vikram provides accurate property valuations that help clients make informed investment decisions.</p>
+                        <a href="#" class="member-contact">
+                            <i class="fas fa-envelope"></i> Contact Vikram
+                        </a>
                     </div>
                 </div>
                 
                 <!-- Team Member 6 -->
-                <div class="team-member-card">
+                <div class="team-member">
                     <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="Team Member">
+                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80" alt="Team Member">
                         <div class="member-overlay">
                             <div class="member-social">
                                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                                 <a href="#"><i class="fab fa-twitter"></i></a>
                                 <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#"><i class="fas fa-envelope"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="member-content">
+                    <div class="member-info">
                         <h3 class="member-name">Neha Gupta</h3>
                         <p class="member-position">Customer Relations</p>
-                        <p class="member-bio">Neha ensures our clients have a seamless experience from their first inquiry through to the completion of their transaction.</p>
-                        <div class="member-skills">
-                            <span class="skill-tag">Customer Service</span>
-                            <span class="skill-tag">Communication</span>
-                            <span class="skill-tag">Support</span>
-                        </div>
-                        <a href="#" class="member-cta">View Profile <i class="fas fa-arrow-right"></i></a>
+                        <p class="member-desc">Neha ensures our clients have a seamless experience from property search to possession, providing personalized support throughout the process.</p>
+                        <a href="#" class="member-contact">
+                            <i class="fas fa-envelope"></i> Contact Neha
+                        </a>
                     </div>
                 </div>
-            </div>
-        </div>
-        
-        <!-- Departments Section -->
-        <div class="departments-container">
-            <h2 class="page-title">Our Departments</h2>
-            <p class="team-description">
-                Our specialized departments work together to provide comprehensive real estate and financial solutions.
-            </p>
-            
-            <div class="departments-grid">
-                <div class="department-card">
-                    <div class="department-icon">
-                        <i class="fas fa-home"></i>
-                    </div>
-                    <h3 class="department-title">Real Estate</h3>
-                    <p class="department-description">
-                        Our real estate department specializes in residential and commercial properties, helping clients buy, sell, and invest in real estate.
-                    </p>
-                    <div class="department-stats">
-                        <div class="stat-item">
-                            <div class="stat-number">500+</div>
-                            <div class="stat-label">Properties</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">15+</div>
-                            <div class="stat-label">Years</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="department-card">
-                    <div class="department-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3 class="department-title">Financial Services</h3>
-                    <p class="department-description">
-                        Our financial advisors provide expert guidance on investments, loans, and financial planning to help clients achieve their goals.
-                    </p>
-                    <div class="department-stats">
-                        <div class="stat-item">
-                            <div class="stat-number">200+</div>
-                            <div class="stat-label">Clients</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">₹50Cr+</div>
-                            <div class="stat-label">Assets</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="department-card">
-                    <div class="department-icon">
-                        <i class="fas fa-gavel"></i>
-                    </div>
-                    <h3 class="department-title">Legal Advisory</h3>
-                    <p class="department-description">
-                        Our legal team ensures all transactions comply with regulations and provides expert advice on property documentation and legal matters.
-                    </p>
-                    <div class="department-stats">
-                        <div class="stat-item">
-                            <div class="stat-number">1000+</div>
-                            <div class="stat-label">Cases</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">12+</div>
-                            <div class="stat-label">Experts</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- CTA Section -->
-        <div class="cta-section">
-            <h2 class="cta-title">Ready to Work With Us?</h2>
-            <p class="cta-description">
-                Whether you're looking to buy a new home, invest in property, or need financial advice, our team is here to help you every step of the way.
-            </p>
-            <div class="cta-buttons">
-                <a href="#" class="btn-primary">Contact Our Team</a>
-                <a href="#" class="btn-secondary">View Our Services</a>
             </div>
         </div>
     </div>
-    
+
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-section footer-about">
                 <h3>About Us</h3>
-                <p>Arif Goldar is a leading real estate and financial services company with over 15 years of experience helping clients achieve their property and financial goals.</p>
+                <p>Arif Goldar is a premier real estate company based in Kolkata, specializing in residential and commercial properties with a commitment to quality and customer satisfaction.</p>
                 <div class="footer-social">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
@@ -1169,23 +997,23 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="projects.html">Projects</a></li>
-                    <li><a href="team.html">Our Team</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="about.html">About</a></li>
                 </ul>
             </div>
             
             <div class="footer-section footer-contact">
                 <h3>Contact Info</h3>
-                <p><i class="fas fa-map-marker-alt"></i> 123 Main Street, Mumbai, India</p>
-                <p><i class="fas fa-phone"></i> +91 98765 43210</p>
-                <p><i class="fas fa-envelope"></i> info@arifgoldar.com</p>
-                <p><i class="fas fa-clock"></i> Mon-Sat: 9:00 AM - 6:00 PM</p>
+                <p><i class="fas fa-map-marker-alt"></i> Chandpur, Panapukur, Kolkata, Pin - 700135</p>
+                <p><i class="fas fa-phone"></i> +91 97484 37602</p>
+                <p><i class="fas fa-envelope"></i> arifgoldar602@gmail.com</p>
+                <p><i class="fas fa-clock"></i> Always Open</p>
             </div>
             
             <div class="footer-section footer-newsletter">
                 <h3>Newsletter</h3>
-                <p>Subscribe to our newsletter for the latest updates and property listings.</p>
+                <p>Subscribe to our newsletter for updates on new projects and offers.</p>
                 <input type="email" placeholder="Your Email">
                 <button>Subscribe</button>
             </div>
@@ -1196,33 +1024,127 @@
         </div>
     </footer>
 
+    <!-- স্বয়ংক্রিয় মিউজিক প্লেয়ার -->
+    <div id="music-player">
+        <div id="music-info">
+            মিউজিক বন্ধ করতে ক্লিক করুন
+        </div>
+        <button id="music-toggle">
+            <span class="icon-play">♫</span>
+            <span class="icon-pause">❚❚</span>
+        </button>
+    </div>
+
     <script>
-        // Mobile menu toggle
-        document.getElementById('mobile-toggle').addEventListener('click', function() {
-            document.getElementById('nav-menu').classList.toggle('active');
-        });
-        
-        // Scroll progress indicator
-        window.onscroll = function() {
-            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            var scrolled = (winScroll / height) * 100;
-            document.getElementById("progress-bar").style.width = scrolled + "%";
-        };
-        
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const navMenu = document.getElementById('nav-menu');
+        // Wait for DOM to load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
             const mobileToggle = document.getElementById('mobile-toggle');
+            const navMenu = document.getElementById('nav-menu');
             
-            if (!navMenu.contains(event.target) && !mobileToggle.contains(event.target) && navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
-            }
-        });
-        
-        // Prevent body scroll when mobile menu is open
-        document.getElementById('mobile-toggle').addEventListener('click', function() {
-            document.body.classList.toggle('no-scroll');
+            mobileToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                mobileToggle.querySelector('i').classList.toggle('fa-bars');
+                mobileToggle.querySelector('i').classList.toggle('fa-times');
+            });
+            
+            // Scroll progress indicator
+            window.addEventListener('scroll', function() {
+                const winHeight = window.innerHeight;
+                const docHeight = document.documentElement.scrollHeight;
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const scrollPercent = (scrollTop / (docHeight - winHeight)) * 100;
+                document.getElementById('progress-bar').style.width = scrollPercent + '%';
+            });
+            
+            // Music player functionality
+            const musicToggle = document.getElementById('music-toggle');
+            const musicInfo = document.getElementById('music-info');
+            let isPlaying = false;
+            let audioContext;
+            let oscillator;
+            
+            // Create wave animation element
+            const wave = document.createElement('div');
+            wave.classList.add('wave-animation');
+            musicToggle.appendChild(wave);
+            
+            // Show music info on hover
+            musicToggle.addEventListener('mouseenter', function() {
+                musicInfo.classList.add('show');
+            });
+            
+            musicToggle.addEventListener('mouseleave', function() {
+                musicInfo.classList.remove('show');
+            });
+            
+            // Toggle music on click
+            musicToggle.addEventListener('click', function() {
+                if (!isPlaying) {
+                    // Start music
+                    try {
+                        // Web Audio API initialization
+                        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                        oscillator = audioContext.createOscillator();
+                        oscillator.type = 'sine';
+                        oscillator.frequency.setValueAtTime(440, audioContext.currentTime);
+                        
+                        // Create a gentle, soothing melody
+                        const gainNode = audioContext.createGain();
+                        gainNode.gain.value = 0.2;
+                        
+                        oscillator.connect(gainNode);
+                        gainNode.connect(audioContext.destination);
+                        
+                        oscillator.start();
+                        isPlaying = true;
+                        musicToggle.classList.add('playing');
+                        
+                        // Create wave animation
+                        wave.classList.add('animate');
+                        setTimeout(() => {
+                            wave.classList.remove('animate');
+                        }, 500);
+                        
+                        // Update music info
+                        musicInfo.textContent = "সঙ্গীত বাজছে...";
+                    } catch (e) {
+                        console.error("Audio context is not supported:", e);
+                        // Fallback to no audio
+                        isPlaying = true;
+                        musicToggle.classList.add('playing');
+                        musicInfo.textContent = "সঙ্গীত সক্রিয়";
+                    }
+                } else {
+                    // Stop music
+                    if (oscillator) {
+                        oscillator.stop();
+                    }
+                    isPlaying = false;
+                    musicToggle.classList.remove('playing');
+                    
+                    // Create wave animation
+                    wave.classList.add('animate');
+                    setTimeout(() => {
+                        wave.classList.remove('animate');
+                    }, 500);
+                    
+                    // Update music info
+                    musicInfo.textContent = "সঙ্গীত বন্ধ";
+                    setTimeout(() => {
+                        if (!isPlaying) {
+                            musicInfo.textContent = "সঙ্গীত শুরু করতে ক্লিক করুন";
+                        }
+                    }, 2000);
+                }
+            });
+            
+            // Auto start music after page load
+            setTimeout(() => {
+                if (!isPlaying) {
+                    musicToggle.click();
+                }
+            }, 3000);
         });
     </script>
 </body>
